@@ -1,0 +1,37 @@
+Warning: No project session found with id 'delegate-8b82ee327314802f280ad17db24ac31e'; creating a new session with that id.
+## Refactoring review — NextZero CLI PR #91
+
+**Required before merge: none.**
+
+The authoritative PR diff does not contain any worthwhile behavior-preserving structural refactor that should delay https://github.com/nextzeroinc/nextzero-cli/pull/91.
+
+### Optional follow-up — low impact
+
+1. **Clarify the “sentinel” naming**
+   - **Reference:** `cli/sessionflow/session.go`, diff hunk `@@ -16,6 +16,28 @@`; `errNodeIdentityStatusUnavailable`, `nodeIdentityStatusError.Error`, and `Unwrap`.
+   - The value named `errNodeIdentityStatusUnavailable` supplies stable display text, but it is not itself in the returned error chain: `Unwrap` exposes only the underlying cause. In Go, “sentinel” normally implies `errors.Is(err, sentinel)` succeeds.
+   - A behavior-preserving cleanup could rename it to something like `nodeIdentityStatusUnavailableMessage` and retain the custom wrapper unchanged.
+   - If discoverability through `errors.Is` is actually intended, adding that behavior is a functional API change—not a refactor—and should be handled separately.
+   - **Preserved behavior:** identical CLI error text; underlying status error remains reachable through `errors.Is/As`; nil-status paths remain opaque.
+   - **Validation:** focused tests asserting exact rendered text, wrapped-cause matching, and no newly exposed match for the presentation value; then `go test ./cli/sessionflow`.
+
+### Refactors considered and rejected
+
+- **Introduce a result struct for `currentNodeIdentity`:** not justified for one private caller; it would add navigation without reducing meaningful complexity.
+- **Extract error constructors:** the three status-failure branches are intentionally distinct and too small to justify another helper.
+- **Collapse `nodeIdentityStatusError` into `fmt.Errorf` or `errors.Join`:** would change rendered text or error-chain behavior.
+- **Further abstract the fresh-enrollment/forced-reauth condition:** `input.ForceReauth || !hasNodeKey` is already the clearest expression.
+- **Deduplicate test setup beyond adding `Status: enrolledStatusClient()` in `loginServiceWithNotifies`:** no demonstrated repetition or change-cost benefit in the affected scope.
+
+### Verification expected before merge
+
+Retain evidence that:
+
+- status is read before opening the watcher or invoking either authentication mutation;
+- nil client, status error, and nil status produce the same stable user-facing error;
+- the underlying status error remains inspectable;
+- fresh identity state invokes interactive login, while an enrolled non-forced login does not;
+- forced reauthentication behavior remains unchanged;
+- `go test ./cli/sessionflow`, the repository-wide Go tests, and applicable `go vet` checks pass.
+
+No files or PR state were modified.

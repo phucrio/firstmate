@@ -1,0 +1,404 @@
+{
+  "schema_version": "pi-background-tasks.fusion-manifest.v4",
+  "run_id": "investigate-62fa709d4638dd34d4183e3323229118",
+  "workflow": "investigate",
+  "source": "tool",
+  "state": "completed",
+  "created_at": "2026-09-17T01:51:56.167Z",
+  "updated_at": "2026-09-17T01:58:55.594Z",
+  "cwd": "/home/ubuntu/Desktop/firstmate",
+  "config": {
+    "schema_version": "pi-background-tasks.fusion-models.v1",
+    "candidates": [
+      "$current",
+      "$current",
+      "$current"
+    ],
+    "evaluator": "$current",
+    "merger": "$current"
+  },
+  "models": {
+    "candidates": [
+      "openai-codex/gpt-5.6-sol",
+      "openai-codex/gpt-5.6-sol",
+      "openai-codex/gpt-5.6-sol"
+    ],
+    "evaluator": "openai-codex/gpt-5.6-sol",
+    "merger": "openai-codex/gpt-5.6-sol",
+    "thinking_level": "medium"
+  },
+  "capabilities": {
+    "candidate": "inspect",
+    "evaluation": "reason",
+    "merge": "reason"
+  },
+  "context": {
+    "kind": "clean_task",
+    "policy_id": "fusion-clean-task-v1"
+  },
+  "tool_policy": {
+    "candidate_tools": [
+      "read",
+      "grep",
+      "find",
+      "ls"
+    ],
+    "evaluation_tools": [],
+    "merge_tools": []
+  },
+  "usage": {
+    "input": 368076,
+    "output": 34647,
+    "cacheRead": 3224064,
+    "cacheWrite": 0,
+    "reasoning": 6600,
+    "totalTokens": 3626787,
+    "cost": {
+      "input": 1.84038,
+      "output": 1.03941,
+      "cacheRead": 1.6120320000000001,
+      "cacheWrite": 0,
+      "total": 4.491822
+    }
+  },
+  "attempts": [
+    {
+      "stage": "candidate",
+      "attempt": 1,
+      "status": "completed",
+      "child_created": true,
+      "prompt_path": "candidate-1.attempt-1.prompt.txt",
+      "events_path": "candidate-1.attempt-1.events.jsonl",
+      "stderr_path": "candidate-1.attempt-1.stderr.txt",
+      "response_path": "candidate-1.attempt-1.response.md",
+      "provider": "openai-codex",
+      "model": "gpt-5.6-sol",
+      "qualifiedId": "openai-codex/gpt-5.6-sol",
+      "usage": {
+        "input": 89319,
+        "output": 8375,
+        "cacheRead": 405760,
+        "cacheWrite": 0,
+        "reasoning": 1485,
+        "totalTokens": 503454,
+        "cost": {
+          "input": 0.446595,
+          "output": 0.25125,
+          "cacheRead": 0.20287999999999998,
+          "cacheWrite": 0,
+          "total": 0.900725
+        }
+      },
+      "tool_calls_path": "candidate-1.attempt-1.tool-calls.jsonl",
+      "tool_calls": {
+        "count": 73,
+        "total_result_bytes": 329412,
+        "trace_complete": true
+      },
+      "slot": 1
+    },
+    {
+      "stage": "candidate",
+      "attempt": 1,
+      "status": "completed",
+      "child_created": true,
+      "prompt_path": "candidate-3.attempt-1.prompt.txt",
+      "events_path": "candidate-3.attempt-1.events.jsonl",
+      "stderr_path": "candidate-3.attempt-1.stderr.txt",
+      "response_path": "candidate-3.attempt-1.response.md",
+      "provider": "openai-codex",
+      "model": "gpt-5.6-sol",
+      "qualifiedId": "openai-codex/gpt-5.6-sol",
+      "usage": {
+        "input": 129924,
+        "output": 9133,
+        "cacheRead": 973568,
+        "cacheWrite": 0,
+        "reasoning": 1700,
+        "totalTokens": 1112625,
+        "cost": {
+          "input": 0.6496199999999999,
+          "output": 0.27399,
+          "cacheRead": 0.486784,
+          "cacheWrite": 0,
+          "total": 1.4103940000000001
+        }
+      },
+      "tool_calls_path": "candidate-3.attempt-1.tool-calls.jsonl",
+      "tool_calls": {
+        "count": 76,
+        "total_result_bytes": 479041,
+        "trace_complete": true
+      },
+      "slot": 3
+    },
+    {
+      "stage": "candidate",
+      "attempt": 1,
+      "status": "completed",
+      "child_created": true,
+      "prompt_path": "candidate-2.attempt-1.prompt.txt",
+      "events_path": "candidate-2.attempt-1.events.jsonl",
+      "stderr_path": "candidate-2.attempt-1.stderr.txt",
+      "response_path": "candidate-2.attempt-1.response.md",
+      "provider": "openai-codex",
+      "model": "gpt-5.6-sol",
+      "qualifiedId": "openai-codex/gpt-5.6-sol",
+      "usage": {
+        "input": 121239,
+        "output": 10487,
+        "cacheRead": 1844736,
+        "cacheWrite": 0,
+        "reasoning": 2383,
+        "totalTokens": 1976462,
+        "cost": {
+          "input": 0.6061949999999999,
+          "output": 0.31460999999999995,
+          "cacheRead": 0.9223680000000001,
+          "cacheWrite": 0,
+          "total": 1.8431730000000002
+        }
+      },
+      "tool_calls_path": "candidate-2.attempt-1.tool-calls.jsonl",
+      "tool_calls": {
+        "count": 91,
+        "total_result_bytes": 494794,
+        "trace_complete": true
+      },
+      "slot": 2
+    },
+    {
+      "stage": "evaluation",
+      "attempt": 1,
+      "status": "completed",
+      "child_created": true,
+      "prompt_path": "evaluation.attempt-1.prompt.txt",
+      "events_path": "evaluation.attempt-1.events.jsonl",
+      "stderr_path": "evaluation.attempt-1.stderr.txt",
+      "response_path": "evaluation.attempt-1.response.txt",
+      "provider": "openai-codex",
+      "model": "gpt-5.6-sol",
+      "qualifiedId": "openai-codex/gpt-5.6-sol",
+      "usage": {
+        "input": 13043,
+        "output": 3064,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "reasoning": 729,
+        "totalTokens": 16107,
+        "cost": {
+          "input": 0.06521500000000001,
+          "output": 0.09192,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "total": 0.15713500000000002
+        }
+      }
+    },
+    {
+      "stage": "merge",
+      "attempt": 1,
+      "status": "completed",
+      "child_created": true,
+      "prompt_path": "merge.attempt-1.prompt.txt",
+      "events_path": "merge.attempt-1.events.jsonl",
+      "stderr_path": "merge.attempt-1.stderr.txt",
+      "response_path": "merge.attempt-1.response.md",
+      "provider": "openai-codex",
+      "model": "gpt-5.6-sol",
+      "qualifiedId": "openai-codex/gpt-5.6-sol",
+      "usage": {
+        "input": 14551,
+        "output": 3588,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "reasoning": 303,
+        "totalTokens": 18139,
+        "cost": {
+          "input": 0.072755,
+          "output": 0.10764,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "total": 0.180395
+        }
+      }
+    }
+  ],
+  "artifacts": {
+    "canonical-input.json": {
+      "path": "canonical-input.json",
+      "byte_length": 5506,
+      "sha256": "sha256:4f7c38b301770fc82173658464523d9e37d03731131ba93f12b3938d3e778ebf"
+    },
+    "budget-plan.json": {
+      "path": "budget-plan.json",
+      "byte_length": 86606,
+      "sha256": "sha256:1dad1637a7f21ef06217c46b7eeaafef4c778d6094b2eb287a557469a8b2fa0d"
+    },
+    "candidate-1.attempt-1.system-prompt.txt": {
+      "path": "candidate-1.attempt-1.system-prompt.txt",
+      "byte_length": 1472,
+      "sha256": "sha256:692b74caef97ebb5008d55cb57defcc262a1e40e2a97052aae5217a20f42f39d"
+    },
+    "candidate-1.attempt-1.prompt.txt": {
+      "path": "candidate-1.attempt-1.prompt.txt",
+      "byte_length": 5506,
+      "sha256": "sha256:4f7c38b301770fc82173658464523d9e37d03731131ba93f12b3938d3e778ebf"
+    },
+    "candidate-1.attempt-1.events.jsonl": {
+      "path": "candidate-1.attempt-1.events.jsonl",
+      "byte_length": 10820,
+      "sha256": "sha256:8ecb3d355601bba800f9273bb03e8ae64c72c00529e7d7fe354ea8abc55c8e7c"
+    },
+    "candidate-1.attempt-1.stderr.txt": {
+      "path": "candidate-1.attempt-1.stderr.txt",
+      "byte_length": 0,
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "candidate-1.attempt-1.response.md": {
+      "path": "candidate-1.attempt-1.response.md",
+      "byte_length": 15129,
+      "sha256": "sha256:a582d610cb42689a3308714b6f44b8151cb46a59577c95d7e2dccd8653b0e5c7"
+    },
+    "candidate-1.attempt-1.tool-calls.jsonl": {
+      "path": "candidate-1.attempt-1.tool-calls.jsonl",
+      "byte_length": 24359,
+      "sha256": "sha256:2ccdb9aa082ce8436490f58a753899116fd4fc010409c96c4d1c673cc1892c4d"
+    },
+    "candidate-3.attempt-1.system-prompt.txt": {
+      "path": "candidate-3.attempt-1.system-prompt.txt",
+      "byte_length": 1472,
+      "sha256": "sha256:692b74caef97ebb5008d55cb57defcc262a1e40e2a97052aae5217a20f42f39d"
+    },
+    "candidate-3.attempt-1.prompt.txt": {
+      "path": "candidate-3.attempt-1.prompt.txt",
+      "byte_length": 5506,
+      "sha256": "sha256:4f7c38b301770fc82173658464523d9e37d03731131ba93f12b3938d3e778ebf"
+    },
+    "candidate-3.attempt-1.events.jsonl": {
+      "path": "candidate-3.attempt-1.events.jsonl",
+      "byte_length": 11663,
+      "sha256": "sha256:ce82a415b03b25578b8b3f6e9ef5cbd9a41d653af4a20aa0c754ff0e2e8126da"
+    },
+    "candidate-3.attempt-1.stderr.txt": {
+      "path": "candidate-3.attempt-1.stderr.txt",
+      "byte_length": 0,
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "candidate-3.attempt-1.response.md": {
+      "path": "candidate-3.attempt-1.response.md",
+      "byte_length": 16433,
+      "sha256": "sha256:f34ead53085452f73831376594ee6312476ce3327050278fabb9ac023b46e51d"
+    },
+    "candidate-3.attempt-1.tool-calls.jsonl": {
+      "path": "candidate-3.attempt-1.tool-calls.jsonl",
+      "byte_length": 25346,
+      "sha256": "sha256:d490f41d9835b458d1b27241c1f3963f374e8589db33a37a8f4d07baecbdf6a5"
+    },
+    "candidate-2.attempt-1.system-prompt.txt": {
+      "path": "candidate-2.attempt-1.system-prompt.txt",
+      "byte_length": 1472,
+      "sha256": "sha256:692b74caef97ebb5008d55cb57defcc262a1e40e2a97052aae5217a20f42f39d"
+    },
+    "candidate-2.attempt-1.prompt.txt": {
+      "path": "candidate-2.attempt-1.prompt.txt",
+      "byte_length": 5506,
+      "sha256": "sha256:4f7c38b301770fc82173658464523d9e37d03731131ba93f12b3938d3e778ebf"
+    },
+    "candidate-2.attempt-1.events.jsonl": {
+      "path": "candidate-2.attempt-1.events.jsonl",
+      "byte_length": 18053,
+      "sha256": "sha256:2fedfb6ccbafb5854d97cea080325c36485d01e325ba1adce9aff889fea2513a"
+    },
+    "candidate-2.attempt-1.stderr.txt": {
+      "path": "candidate-2.attempt-1.stderr.txt",
+      "byte_length": 0,
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "candidate-2.attempt-1.response.md": {
+      "path": "candidate-2.attempt-1.response.md",
+      "byte_length": 16557,
+      "sha256": "sha256:d56e9e70a6354b926740c243dfaa1a3f5f42dd8aa42661cd36ff59023f7ac8fb"
+    },
+    "candidate-2.attempt-1.tool-calls.jsonl": {
+      "path": "candidate-2.attempt-1.tool-calls.jsonl",
+      "byte_length": 30293,
+      "sha256": "sha256:2dd8f4d2fcd2c3bec16b2f2ece8736ad73859b4d8e6f9b96f25bfbe63a44bf15"
+    },
+    "blind-candidates.json": {
+      "path": "blind-candidates.json",
+      "byte_length": 54007,
+      "sha256": "sha256:b3f1a5bf8e19a35a6484fcc861e692357bd7c255caaa5624cca36c9517b08566"
+    },
+    "evaluation.attempt-1.system-prompt.txt": {
+      "path": "evaluation.attempt-1.system-prompt.txt",
+      "byte_length": 1969,
+      "sha256": "sha256:a0316327a194effce5b0038914004e687c4c1c9d1af92adeca49b34c7c5c8e3c"
+    },
+    "evaluation.attempt-1.prompt.txt": {
+      "path": "evaluation.attempt-1.prompt.txt",
+      "byte_length": 54007,
+      "sha256": "sha256:b3f1a5bf8e19a35a6484fcc861e692357bd7c255caaa5624cca36c9517b08566"
+    },
+    "evaluation.attempt-1.events.jsonl": {
+      "path": "evaluation.attempt-1.events.jsonl",
+      "byte_length": 1277,
+      "sha256": "sha256:93b654e7745eb6cdd81876147cdcc3cbdba85756dc706c1aaeff9882b1a4117b"
+    },
+    "evaluation.attempt-1.stderr.txt": {
+      "path": "evaluation.attempt-1.stderr.txt",
+      "byte_length": 0,
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evaluation.attempt-1.response.txt": {
+      "path": "evaluation.attempt-1.response.txt",
+      "byte_length": 11909,
+      "sha256": "sha256:c1ae5f08e7ec70e9bb5c9a03c84d9a82874f98d30725f82fd9a29bfbf653012c"
+    },
+    "evaluation.json": {
+      "path": "evaluation.json",
+      "byte_length": 10363,
+      "sha256": "sha256:b367faf5f78b81e26e10ce933f54c9e8967b5077d28431e858de6a0de8afa2eb"
+    },
+    "merge.attempt-1.system-prompt.txt": {
+      "path": "merge.attempt-1.system-prompt.txt",
+      "byte_length": 470,
+      "sha256": "sha256:d3bb1e5c0488db0dd463bfe7dc17e24b1e8f15e40c1d7dab3fbfe91000e80337"
+    },
+    "merge.attempt-1.prompt.txt": {
+      "path": "merge.attempt-1.prompt.txt",
+      "byte_length": 64379,
+      "sha256": "sha256:1176926b2ef92ee1c375d658b05624db4f92318819b13fcc390fa4ecfd25cc14"
+    },
+    "merge.attempt-1.events.jsonl": {
+      "path": "merge.attempt-1.events.jsonl",
+      "byte_length": 1255,
+      "sha256": "sha256:10b8cdd4eee4194b49e89f3203ccde7aabbba5a4ce2c379c554d13044f6478f2"
+    },
+    "merge.attempt-1.stderr.txt": {
+      "path": "merge.attempt-1.stderr.txt",
+      "byte_length": 0,
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "merge.attempt-1.response.md": {
+      "path": "merge.attempt-1.response.md",
+      "byte_length": 13662,
+      "sha256": "sha256:171bf7a35012e5a5fbfb8cfe5d1f5394dc809a4cb2d2b824d7d43ff65b0f2984"
+    },
+    "merged.md": {
+      "path": "merged.md",
+      "byte_length": 13662,
+      "sha256": "sha256:171bf7a35012e5a5fbfb8cfe5d1f5394dc809a4cb2d2b824d7d43ff65b0f2984"
+    },
+    "result.json": {
+      "path": "result.json",
+      "byte_length": 17100,
+      "sha256": "sha256:cb83138048e148f0bbda7780f3bdae1be5eaebf0f8416b289dd3abc06fdfb120"
+    }
+  },
+  "anonymous_map": {
+    "A": 3,
+    "B": 2,
+    "C": 1
+  }
+}

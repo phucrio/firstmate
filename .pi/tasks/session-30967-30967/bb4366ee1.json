@@ -1,0 +1,19 @@
+{
+  "id": "bb4366ee1",
+  "name": "Recover DLP wire worker",
+  "command": "export FM_HOME=/home/ubuntu/Desktop/firstmate; bin/fm-lease.sh claim dlp-browser-wire-contract-f1 || exit; trap 'bin/fm-lease.sh release dlp-browser-wire-contract-f1' EXIT; bin/fm-control.sh dlp-browser-wire-contract-f1 relaunch --note 'Machine-reset recovery. Before any edit, inspect no-mistakes axi status and run exactly no-mistakes axi sync --recover because run 01M2JH57W97ZTWYQD9D5R5R4W1 has recoverable pipeline custody with submitted head 06136785e02578a63ca144b1dcbb3c9ee097fec4 and preserved unpublished pipeline head 704165985b38c3a268cc97e5dfe3800783051c6c. Follow the returned branch_sync next action; preserve both heads and never reset or rebase around custody. Then read and acknowledge durable inbox 024 containing the Firstmate decision for review-fix24. Feed that decision through the matching no-mistakes gate, let the pipeline apply the bounded Windows ACL/current-identity correction, and drive the same task to one green PR. Do not merge or claim real-browser qualification.'",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-30967-30967/bb4366ee1.output",
+  "cwd": "/home/ubuntu/Desktop/firstmate",
+  "startTime": 1789611147752,
+  "endTime": 1789611164674,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 849974,
+  "bytesWritten": 291,
+  "isAgent": true,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 180
+}

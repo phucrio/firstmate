@@ -1,0 +1,2 @@
+WARNING: queued wakes pending - drain them with bin/fm-wake-drain.sh before anything else.
+relaunched diagnose-nextzero-cli-v113-beta1-docker-login-r1 harness=omp from=omp model=zai/glm-5.3-flash effort=high backend=herdr endpoint=default:w15:p2 worktree=/home/ubuntu/.treehouse/nextzero-cli-bb5ae6/1/nextzero-cli

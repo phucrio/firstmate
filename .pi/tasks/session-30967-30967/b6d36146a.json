@@ -1,0 +1,19 @@
+{
+  "id": "b6d36146a",
+  "name": "Reconcile Telegram PR",
+  "command": "export FM_HOME=/home/ubuntu/Desktop/firstmate; bin/fm-lease.sh claim nextzero-pkgs-telegram-release-alert-r1 || exit; trap 'bin/fm-lease.sh release nextzero-pkgs-telegram-release-alert-r1' EXIT; bin/fm-control.sh nextzero-pkgs-telegram-release-alert-r1 relaunch --note 'Machine-reset reconciliation. Treat existing PR https://github.com/nextzeroinc/nextzero-pkgs/pull/256 at head 2eab03b739a255536c214a22b1e7bec38395150c as the shipping object. Live forge inspection after reset showed it open with 2 passed, 0 failed, and 2 expected skipped Docker/deploy jobs; the local run failure was daemon shutdown, not proof the PR is red. Verify the PR still targets stg, current head is unchanged, every review thread is resolved, PR body markdown is correct, optional hashtag behavior and original-payload retry/cancel contract match accepted intent, stale-send recovery and stored-secret readiness are present, the follow-up ztrust-lm-fe visual-review issue exists if required by the brief, and no real Telegram send occurred. Do not invent another review gate, contact Telegram, merge, or widen scope. If all evidence is satisfied, report the existing PR checks green; otherwise make only the smallest missing in-scope correction on the same PR and validate it.'",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-30967-30967/b6d36146a.output",
+  "cwd": "/home/ubuntu/Desktop/firstmate",
+  "startTime": 1789611147764,
+  "endTime": 1789611183960,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 849978,
+  "bytesWritten": 306,
+  "isAgent": true,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 180
+}

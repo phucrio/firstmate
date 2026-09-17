@@ -1,0 +1,21 @@
+{
+  "id": "bd1bb6961",
+  "name": "Provision Mac second mate",
+  "command": "bin/fm-remote-home-seed.sh mac-laptop fm-mac-laptop /Users/nextzero/.local/share/firstmate /Users/nextzero/.firstmate/homes/mac-laptop nextzero-agent=git@github.com:nextzeroinc/nextzero-agent.git",
+  "description": "Converge the preserved remote route and provision its persistent home after the first caller-side timeout.",
+  "status": "failed",
+  "outputPath": ".pi/tasks/session-30967-30967/bd1bb6961.output",
+  "cwd": "/home/ubuntu/Desktop/firstmate",
+  "startTime": 1789611091857,
+  "endTime": 1789611456447,
+  "exitCode": 1,
+  "signal": null,
+  "pid": 833064,
+  "bytesWritten": 53,
+  "isAgent": false,
+  "error": "Exited with code 1",
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 900
+}

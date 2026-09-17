@@ -1,0 +1,19 @@
+{
+  "id": "b8a2ac333",
+  "name": "Validate teardown conflict resolution",
+  "command": "bin/fm-lint.sh bin/fm-teardown.sh",
+  "status": "failed",
+  "outputPath": ".pi/tasks/session-30967-30967/b8a2ac333.output",
+  "cwd": "/home/ubuntu/Desktop/firstmate",
+  "startTime": 1789608255098,
+  "endTime": 1789608255122,
+  "exitCode": 1,
+  "signal": null,
+  "pid": 43572,
+  "bytesWritten": 150,
+  "isAgent": false,
+  "error": "Exited with code 1",
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true
+}
