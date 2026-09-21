@@ -1,0 +1,65 @@
+# Live product drive: fm-quota-choose.sh agy provider mapping
+# Branch fm/add-agy-quota-provider-mapping-r1, target f074ab2, base fffd826
+# Date: 2026-09-21T07:02:26Z  Host quota-axi: 0.1.48  Product: bin/fm-quota-choose.sh (public argv interface)
+# Snapshots are real quota-axi --json captures from this host (schemaVersion 5) with only the agy row's quotaSemantics edited.
+
+## Scenario A: agy candidate with positive all_models agy quota is SELECTED
+$ bin/fm-quota-choose.sh --snapshot agy-positive.json --candidate agy:default; echo "exit=$?"
+agy default
+exit=0
+
+## BASELINE (base commit fffd826, pre-change lib) same input — reproduces the pre-fix failure:
+$ .tmp-baseline/bin/fm-quota-choose.sh --snapshot agy-positive.json --candidate agy:default; echo "exit=$?"
+error: unknown harness: agy
+exit=2
+
+## Scenario B (adversarial): exhausted agy quota refuses dispatch, prints none, exit 1
+$ bin/fm-quota-choose.sh --snapshot agy-exhausted.json --candidate agy:default; echo "exit=$?"
+none
+exit=1
+
+## Scenario C (adversarial): capture with NO agy row refuses dispatch (mapping must not invent eligibility)
+$ bin/fm-quota-choose.sh --snapshot agy-absent.json --candidate agy:default; echo "exit=$?"
+none
+exit=1
+
+## Scenario D: exhausted agy first candidate falls through to next eligible harness (grok, real row all_products 100%)
+$ bin/fm-quota-choose.sh --snapshot agy-exhausted-grok-known.json --candidate agy:default --candidate grok:default; echo "exit=$?"
+grok default
+exit=0
+
+## Scenario E: REAL host JSON capture (genuine agy row, scopes gemini=1% / claude_gpt=100%) gates agy safely
+real agy row scopes: gemini=1%, claude_gpt=100%
+$ bin/fm-quota-choose.sh --snapshot real.json --candidate agy:default; echo "exit=$?"
+none
+exit=1
+## ... same real capture still routes a healthy non-agy harness:
+$ bin/fm-quota-choose.sh --snapshot real.json --candidate grok:default; echo "exit=$?"
+grok default
+exit=0
+
+## Scenario F: REAL default TOON capture piped on stdin (exact end-user flow), agy falls through to grok
+$ quota-axi --no-credential-refresh | bin/fm-quota-choose.sh --candidate agy:default --candidate grok:default; echo "exit=$?"
+grok default
+exit=0
+agy quota rows in the real TOON capture:
+  agy,gemini,1,unknown,unknown,unknown,gemini_weekly,"2026-09-23T16:02:01.000Z"
+  agy,claude_gpt,100,unknown,unknown,unknown,claude_gpt_5h + claude_gpt_weekly,"2026-09-21T12:00:13.000Z"
+  agy,gemini,unmeasurable,gemini_5h + gemini_weekly blocks runway + spendPriority,none
+  agy,claude_gpt,unmeasurable,claude_gpt_5h + claude_gpt_weekly blocks runway + spendPriority,none
+
+## Scenario G (regression): verified harness with NO provider mapping (rovo) still refused identically
+$ bin/fm-quota-choose.sh --snapshot agy-positive.json --candidate rovo:default; echo "exit=$?"
+error: unknown harness: rovo
+exit=2
+
+## Scenario H (adversarial): duplicate agy provider rows in capture fail closed (duplicate-provider guard)
+$ bin/fm-quota-choose.sh --snapshot agy-duplicate.json --candidate agy:default; echo "exit=$?"
+error: invalid quota-axi provider data
+exit=2
+
+## Supporting check: resolver single-provider mapping for agy is identical before/after (table unchanged by this diff)
+$ (target) . bin/fm-quota-axi-lib.sh && fm_quota_single_provider_for_harness agy
+agy
+$ (base)   . .tmp-baseline/bin/fm-quota-axi-lib.sh && fm_quota_single_provider_for_harness agy
+agy
