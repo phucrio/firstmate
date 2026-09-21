@@ -1,2 +1,0 @@
-WARNING: queued wakes pending - drain them with bin/fm-wake-drain.sh before anything else.
-relaunched nextzero-pkgs-telegram-release-alert-r1 harness=omp from=omp model=zai/glm-5.3-flash effort=high backend=herdr endpoint=default:wP:p2 worktree=/home/ubuntu/.treehouse/nextzero-pkgs-e2e6e9/1/nextzero-pkgs
