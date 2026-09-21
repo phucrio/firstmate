@@ -28,6 +28,7 @@ APPLICABLE_VETO="$LAB/applicable-veto.json"
 MUSE_EXHAUSTED="$LAB/muse-exhausted.json"
 MUSE_POSITIVE="$LAB/muse-positive.json"
 AGY_POSITIVE="$LAB/agy-positive.json"
+AGY_EXHAUSTED="$LAB/agy-exhausted.json"
 TOON="$LAB/quota.toon"
 RENDERER_TOON="$LAB/renderer-quota.toon"
 EMPTY_TOON="$LAB/empty-quota.toon"
@@ -554,11 +555,17 @@ ok "Muse uses Meta quota"
 
 jq '.providers += [{"provider":"agy","windows":[],"quotaSemantics":{"status":"known","effectiveAvailability":[{"scope":"all_models","status":"known","effectivePercentRemaining":25,"runway":{"status":"through_reset"}}]}}]' \
   "$LAB/captured.json" > "$AGY_POSITIVE"
-if err=$(call_choose --snapshot "$AGY_POSITIVE" --candidate agy:default 2>&1); then
-  fail "legacy quota chooser unexpectedly accepted Agy"
+out=$(call_choose --snapshot "$AGY_POSITIVE" --candidate agy:default)
+[ "$out" = "agy default" ] || fail "supported Agy candidate returned: $out"
+ok "Agy candidate is accepted"
+
+jq '.providers += [{"provider":"agy","windows":[],"quotaSemantics":{"status":"known","effectiveAvailability":[{"scope":"all_models","status":"known","effectivePercentRemaining":0,"runway":{"status":"exhausted_now"}}]}}]' \
+  "$LAB/captured.json" > "$AGY_EXHAUSTED"
+if out=$(call_choose --snapshot "$AGY_EXHAUSTED" --candidate agy:default 2>/dev/null); then
+  fail "Agy candidate dispatched with exhausted Agy quota"
 fi
-printf '%s\n' "$err" | grep -F 'unknown harness: agy' >/dev/null || fail "legacy Agy rejection changed: $err"
-ok "Agy remains resolver-only"
+[ "$out" = "none" ] || fail "exhausted Agy quota returned: $out"
+ok "Agy uses Agy quota"
 
 jq '.providers += [.providers[] | select(.provider == "claude")]' "$LAB/captured.json" > "$DUPLICATE"
 if err=$(call_choose --snapshot "$DUPLICATE" --candidate claude:default 2>&1); then
